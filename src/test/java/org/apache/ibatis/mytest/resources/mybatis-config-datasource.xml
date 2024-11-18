@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+  <settings>
+    <setting name="cacheEnabled" value="true"/>
+    <!--缓存级别：SESSION/STATEMENT-->
+    <setting name="localCacheScope" value="STATEMENT"/>
+  </settings>
+
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="UNPOOLED">
+        <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url"
+                  value="jdbc:mysql://127.0.0.1:3306/test?useSSL=false&amp;characterEncoding=utf-8&amp;serverTimezone=Asia/Shanghai&amp;zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;autoReconnect=true&amp;failOverReadOnly=false&amp;useAffectedRows=true"/>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
+      </dataSource>
+    </environment>
+  </environments>
+
+  <mappers>
+    <mapper resource="org/apache/ibatis/mytest/resources/UserMapper.xml"></mapper>
+  </mappers>
+
+</configuration>
