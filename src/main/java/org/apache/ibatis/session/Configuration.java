@@ -81,6 +81,7 @@ import java.util.function.BiFunction;
  */
 public class Configuration {
 
+  // 持有数据源和TransactionFactory
   protected Environment environment;
 
   protected boolean safeRowBoundsEnabled;
@@ -161,6 +162,7 @@ public class Configuration {
   }
 
   public Configuration() {
+    // <transactionManager type="JDBC"/>
     typeAliasRegistry.registerAlias("JDBC", JdbcTransactionFactory.class);
     typeAliasRegistry.registerAlias("MANAGED", ManagedTransactionFactory.class);
 
