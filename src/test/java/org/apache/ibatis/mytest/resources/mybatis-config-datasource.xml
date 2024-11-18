@@ -3,6 +3,11 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
+
+  <properties>
+    <property name="aa" value="1111"/>
+  </properties>
+
   <settings>
     <setting name="cacheEnabled" value="true"/>
     <!--缓存级别：SESSION/STATEMENT-->

@@ -30,6 +30,7 @@ public class ClassLoaderWrapper {
 
   ClassLoaderWrapper() {
     try {
+      // Launcher$AppClassLoader
       systemClassLoader = ClassLoader.getSystemClassLoader();
     } catch (SecurityException ignored) {
       // AccessControlException on Google App Engine
@@ -203,11 +204,11 @@ public class ClassLoaderWrapper {
 
   ClassLoader[] getClassLoaders(ClassLoader classLoader) {
     return new ClassLoader[]{
-        classLoader,
-        defaultClassLoader,
-        Thread.currentThread().getContextClassLoader(),
-        getClass().getClassLoader(),
-        systemClassLoader};
+      classLoader,    // null
+      defaultClassLoader,  // null
+      Thread.currentThread().getContextClassLoader(), // AppClassLoader
+      getClass().getClassLoader(),
+      systemClassLoader};
   }
 
 }
