@@ -32,7 +32,9 @@
   </environments>
 
   <mappers>
-    <mapper resource="org/apache/ibatis/mytest/resources/UserMapper.xml"></mapper>
+    <!-- 这种写法需要Mapper接口和Mapper.xml在同一目录且名字保持一致   -->
+    <package name="org.apache.ibatis.mytest.mapper"/>
+    <!--    <mapper resource="org/apache/ibatis/mytest/mapper/UserMapper.xml"></mapper>-->
   </mappers>
 
 </configuration>
