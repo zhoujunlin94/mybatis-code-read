@@ -112,13 +112,18 @@ public class XMLConfigBuilder extends BaseBuilder {
       // 解析properties标签到Configuration的variables属性中
       propertiesElement(root.evalNode("properties"));
       Properties settings = settingsAsProperties(root.evalNode("settings"));
+      // settings中获取vfsImpl配置    用于配置自定义的 VFS 实现类来适应特殊的文件系统结构或类加载机制。
       loadCustomVfs(settings);
+      // logImpl 日志
       loadCustomLogImpl(settings);
+      // 注册 typeAliases
       typeAliasesElement(root.evalNode("typeAliases"));
       pluginElement(root.evalNode("plugins"));
+      // 配置对象工厂 指定对象的实例化逻辑  mybatis默认是反射无参构造方法（DefaultObjectFactory）  这里可以自定义
       objectFactoryElement(root.evalNode("objectFactory"));
       objectWrapperFactoryElement(root.evalNode("objectWrapperFactory"));
       reflectorFactoryElement(root.evalNode("reflectorFactory"));
+      // settings中的配置项平铺到Configuration字段中
       settingsElement(settings);
       // read it after objectFactory and objectWrapperFactory issue #631
       environmentsElement(root.evalNode("environments"));
